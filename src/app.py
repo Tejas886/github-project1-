@@ -1,0 +1,16 @@
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Hello World", 200
+
+@app.route("/add")
+def add():
+    a = int(request.args.get("a", 0))
+    b = int(request.args.get("b", 0))
+    return jsonify({"result": a + b})
+
+if __name__ == "__main__":
+    app.run()
